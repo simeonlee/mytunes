@@ -3,8 +3,9 @@ var Songs = Backbone.Collection.extend({
 
   model: SongModel,
 
-  initialize: function(){
+  initialize: function() {
     this.getSongs();
+    this.searchSongs();
   },
 
   getSongs: function() {
@@ -23,11 +24,27 @@ var Songs = Backbone.Collection.extend({
     });
   },
 
+  searchSongs: function(query) {
+    $.ajax({
+    // This is the url you should use to communicate with the parse API server.
+      url: 'https://api.parse.com/1/classes/songs',
+      type: 'POST',
+      data: 'million',
+      contentType: 'application/json',
+      success: function (data) {
+        console.log('searching songs:', data);
+      },
+      error: function (data, b, c) {
+        console.log(data, b, c);
+      }
+    });
+  },
+
   handleSongs: function(data) {
     this.reset();
     data.results.forEach(function(song) {
       this.add(song);
-    }.bind(this));
+    }, this);
     console.log(this);
   }
 

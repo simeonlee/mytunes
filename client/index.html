@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
   <body>
     <!-- Scripts may be placed anywhere on a page. But FYI, they block rendering of elements
      below them until after the scripts load-->
@@ -8,7 +9,7 @@
     <script src="bower_components/backbone/backbone.js"></script>
     <script src="env/config.js"></script>
 
-    <script src="data/data.js"></script>
+    <!-- <script src="data/data.js"></script> -->
 
     <script src="models/SongModel.js"></script>
     <script src="collections/Songs.js"></script>
@@ -21,11 +22,16 @@
     <script src="views/SongQueueView.js"></script>
     <script src="views/SongQueueEntryView.js"></script>
     <script src="views/AppView.js"></script>
-
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div>
     <script>
       $(function() {
         // set up model objects
-        var library = new Songs(songData);
+        var library = new Songs();
         var app = new AppModel({library: library});
         // var songQueue = new SongQueue(songData.slice(1));
         // build a view for the top level of the whole app
