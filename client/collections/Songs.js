@@ -5,7 +5,7 @@ var Songs = Backbone.Collection.extend({
 
   initialize: function() {
     this.getSongs();
-    this.searchSongs();
+    // this.searchSongs();
   },
 
   getSongs: function() {
@@ -25,6 +25,7 @@ var Songs = Backbone.Collection.extend({
   },
 
   searchSongs: function(query) {
+    
     $.ajax({
     // This is the url you should use to communicate with the parse API server.
       url: 'https://api.parse.com/1/classes/songs',

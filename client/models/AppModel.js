@@ -2,6 +2,7 @@
 var AppModel = Backbone.Model.extend({
 
   initialize: function(params) {
+    this.set('searchModel', new SearchModel());
     this.set('currentSong', new SongModel());
     this.set('songQueue', new SongQueue());
     // this.set('searchModel', new SearchModel());
@@ -26,9 +27,10 @@ var AppModel = Backbone.Model.extend({
       this.set('currentSong', null);
     }, this);
 
-    // this.get('searchModel').on('submit', function(query) {
-    //   params.library.searchSongs(query);
-    // });
+    // this works
+    this.get('searchModel').on('submit', function(query) {
+      params.library.searchSongs(query);
+    });
 
   }
 
